@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | TajVista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/privacy.css') }}">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600">TajVista</a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+               
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+            <button class="md:hidden text-blue-600" aria-label="Toggle menu" id="menuToggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden bg-white shadow-md py-4 px-4">
+            <div class="flex flex-col space-y-4">
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-sm p-6 md:p-8">
+            <header class="mb-8 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">Privacy Policy</h1>
+                <p class="text-gray-600">Last Updated: May 15, 2023</p>
+            </header>
+
+            <div class="privacy-content space-y-8">
+                <!-- Table of Contents -->
+                <nav class="bg-gray-50 p-4 rounded-lg" aria-labelledby="toc-heading">
+                    <h2 id="toc-heading" class="text-lg font-bold text-blue-600 mb-3">Contents</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#introduction" class="text-blue-600 hover:underline">1. Introduction</a></li>
+                        <li><a href="#data-collection" class="text-blue-600 hover:underline">2. What Data We Collect</a></li>
+                        <li><a href="#data-purpose" class="text-blue-600 hover:underline">3. Why We Collect It</a></li>
+                        <li><a href="#data-protection" class="text-blue-600 hover:underline">4. How We Store and Protect Data</a></li>
+                        <li><a href="#data-sharing" class="text-blue-600 hover:underline">5. Data Sharing</a></li>
+                        <li><a href="#your-rights" class="text-blue-600 hover:underline">6. Your Rights Under GDPR</a></li>
+                        <li><a href="#cookies" class="text-blue-600 hover:underline">7. Cookies</a></li>
+                        <li><a href="#policy-updates" class="text-blue-600 hover:underline">8. Policy Updates</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Introduction -->
+                <section id="introduction" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">1. Introduction</h2>
+                    <p class="mb-4">Welcome to TajVista's Privacy Policy. This policy explains how we collect, use, and protect your personal information when you use our website and services.</p>
+                    <p class="mb-4"><strong>Company Information:</strong> TajVista is operated by TajVista Tours LLC, registered in Tajikistan.</p>
+                    <p class="mb-4"><strong>Contact Information:</strong> If you have any questions about this Privacy Policy, please contact us at:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Email: privacy@tajvista.com</li>
+                        <li>Phone: +992 37 123 4567</li>
+                        <li>Address: 123 Rudaki Avenue, Dushanbe, Tajikistan</li>
+                    </ul>
+                    <p>This Privacy Policy is designed to inform you about your rights and our obligations regarding your personal data in a clear, transparent manner.</p>
+                </section>
+
+                <!-- What Data We Collect -->
+                <section id="data-collection" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">2. What Data We Collect</h2>
+                    <p class="mb-4">We collect different types of information to provide and improve our services to you:</p>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Personal Information</h3>
+                    <p class="mb-2">When you book a tour or contact us, we may collect:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Full name</li>
+                        <li>Email address</li>
+                        <li>Phone number</li>
+                        <li>Passport information (for booking purposes)</li>
+                        <li>Nationality</li>
+                        <li>Date of birth</li>
+                        <li>Special requests or requirements</li>
+                        <li>Payment information (processed securely through our payment providers)</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Technical Information</h3>
+                    <p class="mb-2">When you visit our website, we automatically collect:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>IP address</li>
+                        <li>Browser type and version</li>
+                        <li>Device type</li>
+                        <li>Operating system</li>
+                        <li>Time and date of your visit</li>
+                        <li>Pages you viewed</li>
+                        <li>Time spent on those pages</li>
+                        <li>Referring website addresses</li>
+                    </ul>
+                </section>
+
+                <!-- Why We Collect It -->
+                <section id="data-purpose" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">3. Why We Collect It</h2>
+                    <p class="mb-4">We use your personal information for the following purposes:</p>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Booking Processing</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>To process and confirm your tour bookings</li>
+                        <li>To communicate with you about your booking</li>
+                        <li>To arrange necessary travel documentation</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Customer Support</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>To respond to your inquiries and requests</li>
+                        <li>To provide customer service and support</li>
+                        <li>To send important notifications about your booking</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Legal Compliance</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>To comply with legal obligations</li>
+                        <li>To maintain business records as required by law</li>
+                        <li>To protect our legal rights and interests</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Website Improvement</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>To analyze website usage and improve user experience</li>
+                        <li>To diagnose problems and maintain security</li>
+                        <li>To develop new features and services</li>
+                    </ul>
+                </section>
+
+                <!-- How We Store and Protect Data -->
+                <section id="data-protection" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">4. How We Store and Protect Data</h2>
+                    <p class="mb-4">We take the security of your personal information seriously and implement appropriate measures to protect it:</p>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Data Security</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>We use secure servers to store your personal information</li>
+                        <li>All data transmission between your browser and our website is encrypted using SSL technology</li>
+                        <li>We implement access controls to limit who can access your information</li>
+                        <li>Regular security assessments and updates to our systems</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Data Retention</h3>
+                    <p class="mb-4">We keep your personal information only for as long as necessary:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Booking information is retained for 7 years to comply with tax and legal requirements</li>
+                        <li>Contact form submissions are kept for 2 years</li>
+                        <li>Technical data is typically retained for 26 months</li>
+                    </ul>
+                    <p>After these periods, your data is securely deleted or anonymized.</p>
+                </section>
+
+                <!-- Data Sharing -->
+                <section id="data-sharing" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">5. Data Sharing</h2>
+                    <p class="mb-4">We share your information only when necessary to provide our services or as required by law:</p>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Service Providers</h3>
+                    <p class="mb-2">We may share your information with trusted third parties who assist us in operating our website and business:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Payment processors (to process your payments)</li>
+                        <li>Hotels and accommodation providers (to confirm your booking)</li>
+                        <li>Transportation providers (for airport transfers and tour transportation)</li>
+                        <li>Customer relationship management systems</li>
+                        <li>Email service providers (for sending booking confirmations)</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Legal Requirements</h3>
+                    <p class="mb-2">We may disclose your information when required by law:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>In response to a court order or legal request</li>
+                        <li>To protect our rights, privacy, safety, or property</li>
+                        <li>To investigate potential fraud or illegal activities</li>
+                    </ul>
+                    
+                    <p class="font-semibold">We never sell your personal information to third parties for marketing purposes.</p>
+                </section>
+
+                <!-- Your Rights Under GDPR -->
+                <section id="your-rights" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">6. Your Rights Under GDPR</h2>
+                    <p class="mb-4">Under the General Data Protection Regulation (GDPR), you have several rights regarding your personal data:</p>
+                    
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Right to Access:</strong> You can request a copy of the personal data we hold about you.</li>
+                        <li><strong>Right to Rectification:</strong> You can ask us to correct any inaccurate or incomplete information.</li>
+                        <li><strong>Right to Erasure:</strong> You can request that we delete your personal data in certain circumstances.</li>
+                        <li><strong>Right to Restrict Processing:</strong> You can ask us to temporarily or permanently stop processing your data.</li>
+                        <li><strong>Right to Data Portability:</strong> You can request a copy of your data in a machine-readable format.</li>
+                        <li><strong>Right to Object:</strong> You can object to our processing of your data for direct marketing or legitimate interests.</li>
+                        <li><strong>Right to Withdraw Consent:</strong> You can withdraw your consent at any time where we rely on consent to process your data.</li>
+                    </ul>
+                    
+                    <p class="mb-4">To exercise any of these rights, please contact us at privacy@tajvista.com. We will respond to your request within 30 days.</p>
+                    
+                    <p>If you are not satisfied with our response, you have the right to lodge a complaint with a supervisory authority, such as the Information Commissioner's Office (ICO) in the UK or your local data protection authority.</p>
+                </section>
+
+                <!-- Cookies -->
+                <section id="cookies" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">7. Cookies</h2>
+                    <p class="mb-4">Our website uses cookies to enhance your browsing experience and provide certain features:</p>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Types of Cookies We Use</h3>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Essential Cookies:</strong> Required for the website to function properly (e.g., session cookies for booking process)</li>
+                        <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+                        <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website (e.g., Google Analytics)</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Managing Cookies</h3>
+                    <p class="mb-4">You can control cookies through your browser settings. Most browsers allow you to:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Block third-party cookies</li>
+                        <li>Block all cookies</li>
+                        <li>Delete cookies when you close your browser</li>
+                    </ul>
+                    
+                    <p>Please note that blocking some types of cookies may impact your experience on our website and the services we can offer.</p>
+                </section>
+
+                <!-- Policy Updates -->
+                <section id="policy-updates" class="scroll-mt-20">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">8. Policy Updates</h2>
+                    <p class="mb-4">We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons.</p>
+                    
+                    <p class="mb-4">When we make significant changes to this policy, we will:</p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Update the "Last Updated" date at the top of this page</li>
+                        <li>Place a prominent notice on our website</li>
+                        <li>Send an email notification to users who have provided us with their email address (for material changes)</li>
+                    </ul>
+                    
+                    <p class="mb-4">We encourage you to review this Privacy Policy periodically to stay informed about how we protect your personal information.</p>
+                    
+                    <p>Previous versions of this policy are available upon request by contacting privacy@tajvista.com.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">TajikTours</h3>
+                    <p class="text-gray-400">
+                        Specializing in authentic, small-group tours through Tajikistan's most spectacular landscapes and cultural sites.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                        
+
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">bookings@tajiktours.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">+992 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">Dushanbe, Tajikistan</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 TajVista. All rights reserved. | <a href="/privacy" class="hover:text-gray-400">Privacy Policy</a> | <a href="#" class="hover:text-gray-400">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Add the menu.js script before the closing body tag -->
+    <script src="{{ url_for('static', filename='js/privacy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

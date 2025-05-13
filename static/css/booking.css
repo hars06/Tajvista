@@ -1,0 +1,257 @@
+/* Booking Page Styles */
+
+/* Variables */
+:root {
+    --primary-color: #0D6EFD;
+    --primary-dark: #0b5ed7;
+    --primary-light: #e6f0ff;
+    --text-color: #333333;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+}
+
+/* Base Styles */
+body {
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* Accessibility Focus Styles */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Step Indicators */
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-number {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.step-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step-connector {
+    height: 2px;
+    background-color: #e2e8f0;
+    flex-grow: 1;
+    margin: 0 15px;
+    margin-top: -30px;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.step-connector.active {
+    background-color: var(--primary-color);
+}
+
+/* Form Steps */
+.step-form {
+    display: none;
+}
+
+.step-form.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Elements */
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-error {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Payment Tabs */
+.payment-tab {
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    color: #64748b;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.payment-tab:hover {
+    color: var(--primary-color);
+}
+
+.payment-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.payment-panel {
+    display: none;
+}
+
+.payment-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Stripe Elements */
+.StripeElement {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.StripeElement--focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.StripeElement--invalid {
+    border-color: var(--error-color);
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Hero Video */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .payment-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .step-label {
+        font-size: 12px;
+    }
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Animation */
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 30;
+    flex-direction: column;
+}
+
+.hamburger-menu.active {
+    display: block;
+}
+
+.hamburger-menu a {
+    padding: 0.75rem 0;
+    color: #4B5563;
+    font-weight: 500;
+    
+}
+
+.hamburger-menu a:hover {
+    color: #2563EB;
+}
+.hidden {
+    display: none;
+}

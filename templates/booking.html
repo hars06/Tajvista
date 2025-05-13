@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Tajikistan Adventure | TajVista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}">
+    <!-- Stripe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Security meta tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://js.stripe.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600">TajVista</a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+            <button class="md:hidden text-blue-600" aria-label="Toggle menu" id="menuToggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden bg-white shadow-md py-4 px-4">
+            <div class="flex flex-col space-y-4">
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Booking Form Section -->
+            <div class="w-full lg:w-2/3">
+                <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                    <!-- Progress Steps -->
+                    <div class="flex items-center justify-center mb-8">
+                        <div class="step-indicator active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Traveller Information</div>
+                        </div>
+                        <div class="step-connector"></div>
+                        <div class="step-indicator">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Payment & Confirmation</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Traveller Information Form -->
+                    <div id="step1Form" class="step-form active">
+                        <h2 class="text-2xl font-bold text-blue-600 mb-6">Traveller Information</h2>
+                        <p class="text-gray-600 mb-6">Please provide your details exactly as they appear on your passport.</p>
+                        
+                        <form id="travellerForm">
+                            <!-- CSRF Token (hidden) -->
+                            <input type="hidden" name="csrf_token" id="csrf_token" value="">
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="col-span-2">
+                                    <label for="fullName" class="block text-gray-700 font-medium mb-2">Full Name (Latin)</label>
+                                    <input type="text" id="fullName" name="fullName" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                        placeholder="As shown on passport">
+                                </div>
+                                
+                                <div>
+                                    <label for="passportNumber" class="block text-gray-700 font-medium mb-2">Passport Number</label>
+                                    <input type="text" id="passportNumber" name="passportNumber" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                        placeholder="e.g. AB1234567">
+                                </div>
+                                
+                                <div>
+                                    <label for="nationality" class="block text-gray-700 font-medium mb-2">Nationality</label>
+                                    <select id="nationality" name="nationality" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                                        <option value="" disabled selected>Select your country</option>
+                                        <!-- Will be populated by JavaScript -->
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="dateOfBirth" class="block text-gray-700 font-medium mb-2">Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                                </div>
+                                
+                                <div>
+                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Phone / WhatsApp</label>
+                                    <input type="tel" id="phone" name="phone" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                        placeholder="+1 (234) 567-8901">
+                                </div>
+                                
+                                <div class="col-span-2">
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                        placeholder="your@email.com">
+                                </div>
+                                
+                                <div class="col-span-2">
+                                    <label for="specialRequests" class="block text-gray-700 font-medium mb-2">Special Requests (Optional)</label>
+                                    <textarea id="specialRequests" name="specialRequests" rows="4"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+                                        placeholder="Dietary requirements, accessibility needs, etc."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <button type="submit" id="continueToPayment" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition">
+                                    Continue to Payment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment Section -->
+                    <div id="step2Form" class="step-form">
+                        <h2 class="text-2xl font-bold text-blue-600 mb-6">Payment & Confirmation</h2>
+                        <p class="text-gray-600 mb-6">Secure your booking with a $100 deposit. The remaining balance will be due 30 days before your tour.</p>
+                        
+                        <!-- Payment Method Tabs -->
+                        <div class="mb-8">
+                            <div class="flex border-b border-gray-200">
+                                <button class="payment-tab active" data-tab="card">
+                                    <i class="fas fa-credit-card mr-2"></i> Credit/Debit Card
+                                </button>
+                                <button class="payment-tab" data-tab="bank">
+                                    <i class="fas fa-university mr-2"></i> Bank Transfer
+                                </button>
+                                <button class="payment-tab" data-tab="arrival">
+                                    <i class="fas fa-handshake mr-2"></i> Pay on Arrival
+                                </button>
+                            </div>
+                            
+                            <!-- Card Payment Panel -->
+                            <div id="cardPayment" class="payment-panel active">
+                                <div class="py-6">
+                                    <div id="card-element" class="mb-4">
+                                        <!-- Stripe Elements will be inserted here -->
+                                    </div>
+                                    <div id="card-errors" class="text-red-500 text-sm mb-4"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bank Transfer Panel -->
+                            <div id="bankPayment" class="payment-panel">
+                                <div class="py-6">
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                                        <h4 class="font-bold text-blue-600 mb-2">Bank Transfer Details</h4>
+                                        <p class="mb-2">Please transfer the deposit amount to:</p>
+                                        <p><strong>Bank:</strong> Central Asia Bank</p>
+                                        <p><strong>Account Name:</strong> TajikTours LLC</p>
+                                        <p><strong>IBAN:</strong> TJ89 1234 5678 9012 3456 78</p>
+                                        <p><strong>Reference:</strong> Your full name</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600">After making the transfer, please email a confirmation to <a href="mailto:bookings@tajiktours.com" class="text-blue-600 hover:underline">bookings@tajiktours.com</a></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Pay on Arrival Panel -->
+                            <div id="arrivalPayment" class="payment-panel">
+                                <div class="py-6">
+                                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                                        <h4 class="font-bold text-blue-600 mb-2">Pay on Arrival</h4>
+                                        <p>You can pay the full amount in cash (USD or local currency) upon arrival in Tajikistan.</p>
+                                        <p class="mt-2 text-sm text-gray-600">Note: Your booking will be confirmed, but priority may be given to pre-paid bookings if the tour is nearly full.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Terms & Conditions -->
+                        <div class="mb-6">
+                            <label class="flex items-start">
+                                <input type="checkbox" id="terms" class="mt-1 mr-3">
+                                <span class="text-sm text-gray-600">
+                                    I agree to the <a href="#" class="text-blue-600 hover:underline">Terms & Conditions</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>. I understand that my personal data will be processed as described in the Privacy Policy.
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button id="backToInfo" class="sm:w-1/3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition">
+                                <i class="fas fa-arrow-left mr-2"></i> Back
+                            </button>
+                            <button id="completeBooking" class="sm:w-2/3 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition">
+                                Pay $100 Deposit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Summary Sidebar -->
+            <div class="w-full lg:w-1/3">
+                <div class="bg-white rounded-xl shadow-md p-6 md:p-8 sticky top-24">
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Your Booking Summary</h3>
+                    
+                    <!-- Tour Details -->
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Tour Type:</span>
+                            <span id="tourType" class="font-medium">Nature Adventurer</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Travelers:</span>
+                            <span id="travelerCount" class="font-medium">1 person</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Departure Date:</span>
+                            <span id="departureDate" class="font-medium">June 15, 2023</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Duration:</span>
+                            <span class="font-medium">6 days</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Breakdown -->
+                    <div class="border-t border-b border-gray-200 py-4 mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Tour Price:</span>
+                            <span class="font-medium">$3,000</span>
+                        </div>
+                        <div class="flex justify-between text-blue-600 font-bold">
+                            <span>Total:</span>
+                            <span>$3,000</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-500">
+                            Deposit due today: $100
+                        </div>
+                    </div>
+                    
+                    <!-- Next Tour Countdown -->
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="font-bold text-blue-600 mb-2">Next Available Tour</h4>
+                        <div id="countdown" class="text-center">
+                            <div class="grid grid-cols-4 gap-2">
+                                <div class="bg-white p-2 rounded">
+                                    <div id="days" class="text-xl font-bold text-blue-600">00</div>
+                                    <div class="text-xs text-gray-500">Days</div>
+                                </div>
+                                <div class="bg-white p-2 rounded">
+                                    <div id="hours" class="text-xl font-bold text-blue-600">00</div>
+                                    <div class="text-xs text-gray-500">Hours</div>
+                                </div>
+                                <div class="bg-white p-2 rounded">
+                                    <div id="minutes" class="text-xl font-bold text-blue-600">00</div>
+                                    <div class="text-xs text-gray-500">Mins</div>
+                                </div>
+                                <div class="bg-white p-2 rounded">
+                                    <div id="seconds" class="text-xl font-bold text-blue-600">00</div>
+                                    <div class="text-xs text-gray-500">Secs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Support -->
+                    <div>
+                        <h4 class="font-bold text-gray-700 mb-2">Need Help?</h4>
+                        <a href="https://wa.me/12345678901" class="flex items-center text-green-600 hover:text-green-700 mb-2">
+                            <i class="fab fa-whatsapp text-xl mr-2"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                        <a href="mailto:support@tajiktours.com" class="flex items-center text-blue-600 hover:text-blue-700">
+                            <i class="fas fa-envelope text-lg mr-2"></i>
+                            <span>support@tajiktours.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">TajikTours</h3>
+                    <p class="text-gray-400">
+                        Specializing in authentic, small-group tours through Tajikistan's most spectacular landscapes and cultural sites.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                        
+
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">bookings@tajiktours.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">+992 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">Dushanbe, Tajikistan</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 TajVista. All rights reserved. | <a href="/privacy" class="hover:text-gray-400">Privacy Policy</a> | <a href="#" class="hover:text-gray-400">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Add the menu.js script before the closing body tag -->
+    <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>

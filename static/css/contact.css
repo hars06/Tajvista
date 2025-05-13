@@ -1,0 +1,206 @@
+/* Contact Page Styles */
+
+/* Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #0D6EFD;
+}
+
+/* Contact Info Block */
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-icon {
+    color: #0D6EFD;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.contact-info-content h3 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #0D6EFD;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+    background-color: #0D6EFD;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-primary:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+/* Error and Success Messages */
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    background-color: #d1fae5;
+    border: 1px solid #10b981;
+    color: #047857;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.error-alert {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #b91c1c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 400px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Focus styles for better accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 2px solid #0D6EFD;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .map-container, 
+    form,
+    footer {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    a[href^="tel:"]::after,
+    a[href^="mailto:"]::after {
+        content: " (" attr(href) ")";
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    @page {
+        margin: 2cm;
+    }
+}
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 30;
+    flex-direction: column;
+}
+
+.hamburger-menu.active {
+    display: block;
+}
+
+.hamburger-menu a {
+    padding: 0.75rem 0;
+    color: #4B5563;
+    font-weight: 500;
+    
+}
+
+.hamburger-menu a:hover {
+    color: #2563EB;
+}
+.hidden {
+    display: none;
+}

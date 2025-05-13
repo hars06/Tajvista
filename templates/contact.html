@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | TajVista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600">TajVista</a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+            <button class="md:hidden text-blue-600" aria-label="Toggle menu" id="menuToggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden bg-white shadow-md py-4 px-4">
+            <div class="flex flex-col space-y-4">
+                
+                <a href="/contact" class="text-gray-600 hover:text-blue-600 font-medium">Contacts</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <!-- Intro Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">Get in Touch</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">We're happy to answer any questions about your Tajikistan adventure. Reach out to us anytime!</p>
+        </header>
+
+        <!-- Contact Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Contact Info Block -->
+            <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-blue-600 mb-6">Contact Information</h2>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fas fa-phone-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Phone</h3>
+                            <p class="text-gray-700 mb-1">Call us directly:</p>
+                            <a href="tel:+992371234567" class="text-blue-600 hover:underline">+992 37 123 4567</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">WhatsApp</h3>
+                            <p class="text-gray-700 mb-1">Message us on WhatsApp:</p>
+                            <a href="https://wa.me/992371234567" class="text-blue-600 hover:underline" target="_blank">+992 37 123 4567</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Telegram</h3>
+                            <p class="text-gray-700 mb-1">Message us on Telegram:</p>
+                            <a href="https://t.me/tajvista" class="text-blue-600 hover:underline" target="_blank">@tajvista</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Email</h3>
+                            <p class="text-gray-700 mb-1">Send us an email:</p>
+                            <a href="mailto:info@tajvista.com" class="text-blue-600 hover:underline">info@tajvista.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Address</h3>
+                            <p class="text-gray-700">123 Rudaki Avenue<br>Dushanbe, Tajikistan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="text-blue-600 mr-4 mt-1">
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Operating Hours</h3>
+                            <p class="text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trust Signal: Office Photo -->
+                <div class="mt-8">
+                    <img src="{{ url_for('static', filename='images/office.jpg') }}" alt="TajVista Office" class="w-full h-auto rounded-lg shadow-sm" onerror="this.style.display='none'">
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-blue-600 mb-6">Send Us a Message</h2>
+                
+                <form id="contactForm" class="space-y-6">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="nameError"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="emailError"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="messageError"></div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition">
+                            Send Message
+                        </button>
+                    </div>
+                    
+                    <!-- GDPR reminder -->
+                    <div class="text-sm text-gray-600">
+                        <p>We will never share your information. See our <a href="/privacy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+                    </div>
+                </form>
+                
+                <!-- Form Success Message (hidden by default) -->
+                <div id="successMessage" class="hidden mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                    <strong class="font-bold">Thank you!</strong>
+                    <p>Your message has been sent successfully. We'll get back to you soon.</p>
+                </div>
+                
+                <!-- Form Error Message (hidden by default) -->
+                <div id="errorMessage" class="hidden mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                    <strong class="font-bold">Oops!</strong>
+                    <p>There was a problem sending your message. Please try again later.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="bg-white rounded-xl shadow-sm p-6 md:p-8 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">Find Us</h2>
+            
+            <div class="map-container w-full h-96 rounded-lg overflow-hidden">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12614.662319258958!2d68.77285755!3d38.5597645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b5d16fd7c9e999%3A0xc43a1ecbf8f20bc!2sDushanbe%2C%20Tajikistan!5e0!3m2!1sen!2sus!4v1652345678901!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="TajVista Office Location">
+                </iframe>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">TajikTours</h3>
+                    <p class="text-gray-400">
+                        Specializing in authentic, small-group tours through Tajikistan's most spectacular landscapes and cultural sites.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                        
+
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">bookings@tajiktours.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">+992 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                            <span class="text-gray-400">Dushanbe, Tajikistan</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-blue-400 mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 TajVista. All rights reserved. | <a href="/privacy" class="hover:text-gray-400">Privacy Policy</a> | <a href="#" class="hover:text-gray-400">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Add the menu.js script before the closing body tag -->
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+</html>
