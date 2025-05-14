@@ -6,6 +6,19 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: #4b5563;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -121,10 +134,30 @@ h1, h2, h3, h4, h5, h6 {
     .container {
         padding-left: 1rem;
         padding-right: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .map-container {
         height: 300px;
+    }
+    
+    /* Fix for mobile elements */
+    input, select, textarea, button {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure content blocks don't overflow */
+    .bg-white.rounded-xl.shadow-sm {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Adjust grid spacing */
+    .grid.gap-8 {
+        gap: 1rem;
     }
 }
 
@@ -185,6 +218,7 @@ a:focus, button:focus, input:focus, textarea:focus {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 30;
     flex-direction: column;
+    width: 100%;
 }
 
 .hamburger-menu.active {
@@ -195,7 +229,6 @@ a:focus, button:focus, input:focus, textarea:focus {
     padding: 0.75rem 0;
     color: #4B5563;
     font-weight: 500;
-    
 }
 
 .hamburger-menu a:hover {

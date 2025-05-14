@@ -15,6 +15,14 @@
 body {
     color: var(--text-color);
     line-height: 1.5;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Accessibility Focus Styles */
@@ -190,12 +198,38 @@ button:disabled {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .payment-tab {
-        padding: 0.75rem 1rem;
-        font-size: 0.875rem;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.75rem;
     }
     
     .step-label {
         font-size: 12px;
+    }
+    
+    /* Fix for payment tabs on mobile */
+    .flex.border-b.border-gray-200 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Ensure form elements don't overflow */
+    input, select, textarea {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Fix for mobile container */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure booking summary doesn't overflow */
+    .bg-white.rounded-xl.shadow-md {
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
